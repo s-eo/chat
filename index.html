@@ -30,7 +30,13 @@
       socket.emit('chat message', inputEl.value);
       inputEl.value = '';
       return false;
-    }
+    };
+    var list = document.getElementsByTagName('ul').item(0);
+    socket.on('chat message', function(msg){
+      var litem = document.createElement('li');
+      litem.textContent = msg;
+      list.appendChild(litem);
+    });
   </script>
 </body>
 </html>
